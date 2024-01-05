@@ -65,4 +65,14 @@ function db_run_query()
     echo '</div>';
     echo '<button type="submit" class="btn btn-primary">Run</button>';
     echo '</form>';
+?>
+<script>
+    jQuery(document).ready(function($) {
+        $('textarea').on('input', function() {
+            $(this).height(this.scrollHeight);
+        });
+        $('textarea').trigger('input');
+    });
+</script>
+<?php
 }

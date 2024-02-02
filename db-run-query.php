@@ -47,7 +47,7 @@ function db_run_query()
     $sql = '';
 
     if (isset($_POST['sql_command'])) {
-        $sql = $_POST['sql_command'];
+        $sql = stripslashes_deep($_POST['sql_command']);
 
         $result = $wpdb->query($sql);
 

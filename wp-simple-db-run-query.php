@@ -69,9 +69,10 @@ function db_run_query()
 <script>
     jQuery(document).ready(function($) {
         $('textarea').on('input', function() {
+            // Keep '' instead of 0, 0 will reduce the textarea size when there is only one line of text
+            $(this).height('');
             $(this).height(this.scrollHeight);
         });
-        $('textarea').trigger('input');
     });
 </script>
 <?php

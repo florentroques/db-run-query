@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Database run query
+ * Plugin Name: Simple database query runner
  * Description: Query your database tables
  * Author: florentroques
  */

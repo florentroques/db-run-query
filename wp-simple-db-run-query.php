@@ -12,7 +12,7 @@ define('WSDRQ_PLUGIN_SLUG', 'wp-simple-db-run-query');
 
 add_action('admin_enqueue_scripts', 'wsdrq_add_bootstrap_css');
 
-function add_bootstrap_css_db_run_query()
+function wsdrq_add_bootstrap_css()
 {
     global $pagenow;
 

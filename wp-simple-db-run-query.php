@@ -8,7 +8,9 @@
 
 if (!defined('ABSPATH')) exit;
 
-add_action('admin_enqueue_scripts', 'add_bootstrap_css_db_run_query');
+define('WSDRQ_PLUGIN_SLUG', 'wp-simple-db-run-query');
+
+add_action('admin_enqueue_scripts', 'wsdrq_add_bootstrap_css');
 
 function add_bootstrap_css_db_run_query()
 {
@@ -16,31 +18,31 @@ function add_bootstrap_css_db_run_query()
 
     if (!(
         ($pagenow == 'admin.php') &&
-        (isset($_GET['page']) && $_GET['page'] == 'db-run-query')
+        (isset($_GET['page']) && $_GET['page'] == WSDRQ_PLUGIN_SLUG)
     )) {
         return;
     }
 
-    wp_enqueue_style('db_run_query_bootstrap-styles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+    wp_enqueue_style('wsdrq_bootstrap-styles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
 }
 
 
-add_action('admin_menu', 'setup_menu_plugin_db_run_query');
+add_action('admin_menu', 'wsdrq_setup_menu_plugin');
 
-function setup_menu_plugin_db_run_query()
+function wsdrq_setup_menu_plugin()
 {
     add_menu_page(
         'Run query',
         'Run query',
         'manage_options',
-        'db-run-query',
-        'db_run_query',
+        WSDRQ_PLUGIN_SLUG,
+        'wp_simple_db_run_query',
         '',
         3.2
     );
 }
 
-function db_run_query()
+function wp_simple_db_run_query()
 {
     global $wpdb;
 
